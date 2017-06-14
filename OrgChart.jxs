@@ -1,0 +1,30 @@
+import React from 'react';
+import 'orgchart';
+import 'orgchart/dist/css/jquery.orgchart.css';
+import 'font-awesome/css/font-awesome.css';
+
+class OrgChart extends React.Component {
+
+  componentDidMount() {
+    this.$el = $(this.el);
+    this.$el.orgchart({
+      'data' : this.props.structureData,
+      'depth': 20,
+      'nodeContent': 'title',
+      // 'zoom': true,
+      // 'pan': true,
+      'exportButton': true,
+      'exportFilename': 'MyOrgChart'
+    });
+  }
+
+  render() {
+    return(
+      <div>
+        <div ref={el => this.el = el}/>
+      </div>
+    );
+  }
+}
+
+export default OrgChart;
